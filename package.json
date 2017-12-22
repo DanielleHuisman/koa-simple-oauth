@@ -1,0 +1,57 @@
+{
+  "name": "koa-simple-oauth",
+  "description": "Simple OAuth2 authentication middleware for Koa.",
+  "version": "1.0.0",
+  "license": "MIT",
+  "author": "Vereniging Campus Kabel <info@vck.tv> (https://vck.tv)",
+  "contributors": [
+    "Daniel Huisman <daniel@huisman.me> (https://danielhuisman.io)"
+  ],
+  "repository": "github:VerenigingCampusKabel/koa-simple-oauth",
+  "homepage": "https://github.com/VerenigingCampusKabel/koa-simple-oauth",
+  "bugs": {
+    "url": "https://github.com/VerenigingCampusKabel/koa-simple-oauth/issues",
+    "email": "info@vck.tv"
+  },
+  "keywords": [
+    "koa",
+    "oauth",
+    "oauth2",
+    "authentication",
+    "middleware"
+  ],
+  "main": "lib/index.js",
+  "files": [
+    "lib/",
+    "LICENSE.md",
+    "README.md"
+  ],
+  "scripts": {
+    "clean": "rimraf lib",
+    "lint": "eslint index.js src --color",
+    "build:babel": "cross-env NODE_ENV=production babel src --out-dir lib",
+    "build": "yarn run clean && yarn run build:babel",
+    "prepublish": "yarn run build"
+  },
+  "dependencies": {
+    "babel-runtime": "^6.26.0",
+    "randomstring": "^1.1.5",
+    "simple-oauth2": "^1.5.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0",
+    "babel-eslint": "^8.0.3",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-plugin-uglify": "^1.0.2",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-es2015": "^6.6.0",
+    "babel-preset-stage-0": "^6.24.1",
+    "cross-env": "^5.1.3",
+    "eslint": "^4.13.1",
+    "eslint-config-google": "^0.9.1",
+    "eslint-plugin-babel": "^4.1.2",
+    "eslint-plugin-import": "^2.8.0",
+    "rimraf": "^2.6.2"
+  }
+}
