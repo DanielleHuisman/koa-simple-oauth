@@ -33,6 +33,8 @@ export default ({
         login: router.get(login, middleware.login),
         authorized: router.get(authorized, middleware.authorized),
         whoami: router.get(whoami, middleware.whoami),
-        logout: router.get(logout, middleware.logout)
+        logout: router.get(logout, middleware.logout),
+        isLoggedIn: middleware.isLoggedIn,
+        requireLogin: middleware.requireLogin
     };
 };

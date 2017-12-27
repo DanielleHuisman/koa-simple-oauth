@@ -141,10 +141,30 @@ export default ({
         }
     };
 
+    // Is logged in middleware
+    const isLoggedIn = async (ctx, next) => {
+        ctx.state.isLoggedIn = () => ctx.session.token && new Date() < new Date(ctx.session.token.expires_at) && ctx.session.user;
+        await next();
+    };
+
+    // Require login middleware
+    const requireLogin = async (ctx, next) => {
+        // Check if the user is logged in and the token is still valid
+        if (ctx.session.token && new Date() < new Date(ctx.session.token.expires_at) && ctx.session.user) {
+            await next();
+        } else {
+            const err = new Error('Not logged in');
+            logError(err);
+            return onError(ctx, 401, 'Not logged in', err);
+        }
+    };
+
     return {
         login,
         authorized,
         whoami,
-        logout
+        logout,
+        isLoggedIn,
+        requireLogin
     };
 };

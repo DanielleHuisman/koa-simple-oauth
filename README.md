@@ -108,7 +108,23 @@ const router = new Router();
 
 // Initialize Koa Simple OAuth
 // Adds all required middleware to the router
-simpleOauth(oauthConfig, router);
+const {isLoggedIn, requireLogin} = simpleOauth(oauthConfig, router);
+
+// Check if a user is logged in
+router.use(isLoggedIn);
+router.get('/admin', async (ctx) => {
+    if (ctx.state.isLoggedIn()) {
+        ctx.body = 'Logged in';
+    } else {
+        ctx.status = 403;
+        ctx.body = 'Not logged in';
+    }
+});
+
+// Check if the user is logged in using middleware
+router.get('/admin2', requireLogin, async (ctx) => {
+    ctx.body = 'Logged in';
+})
 
 // Add Koa Router middleware
 app.use(router.routes());
