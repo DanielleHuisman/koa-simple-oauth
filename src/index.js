@@ -1,6 +1,10 @@
 import createMiddleware from './middleware';
 
 const defaultConfig = {
+    onSuccess: (ctx, status = 200, data = null) => {
+        ctx.status = status;
+        ctx.body = typeof data === 'object' ? JSON.stringify(data) : data;
+    },
     onError: (ctx, status, message) => {
         ctx.status = status;
         ctx.body = message;
@@ -24,14 +28,11 @@ export default ({
         return middleware;
     }
 
-    // Register middleware
-    router.get(login, middleware.login);
-
-    router.get(authorized, middleware.authorized);
-
-    router.get(whoami, middleware.whoami);
-    router.post(whoami, middleware.whoami);
-
-    router.get(logout, middleware.logout);
-    router.post(logout, middleware.logout);
+    // Register middleware and return any results
+    return {
+        login: router.get(login, middleware.login),
+        authorized: router.get(authorized, middleware.authorized),
+        whoami: router.get(whoami, middleware.whoami),
+        logout: router.get(logout, middleware.logout)
+    };
 };
