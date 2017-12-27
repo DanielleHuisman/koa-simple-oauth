@@ -1,6 +1,6 @@
 # koa-simple-oauth
 
-[![npm](https://img.shields.io/npm/v/koa-simple-oauth.svg)]()
+[![koa-simple-oauth](https://img.shields.io/npm/v/koa-simple-oauth.svg)](https://www.npmjs.com/package/koa-simple-oauth)
 
 Simple OAuth2 authentication middleware for Koa. Internally uses [simple-oauth2](https://github.com/lelylan/simple-oauth2) and [Node Fetch API](https://github.com/bitinn/node-fetch).
 
