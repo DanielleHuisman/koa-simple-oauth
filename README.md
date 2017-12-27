@@ -85,6 +85,14 @@ const oauthConfig = {
         if (err.message !== 'Not logged in') {
             console.error(err);
         }
+    },
+
+    // Route configuration (only works if a router is provided)
+    routes: {
+        login: '/login',
+        authorized: '/authorized',
+        whoami: '/whoami',
+        logout: '/logout'
     }
 };
 ```
