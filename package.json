@@ -35,7 +35,7 @@
   },
   "dependencies": {
     "babel-runtime": "^6.26.0",
-    "node-fetch": "^1.7.3",
+    "node-fetch": "^2.6.1",
     "randomstring": "^1.1.5",
     "simple-oauth2": "^1.5.0"
   },
